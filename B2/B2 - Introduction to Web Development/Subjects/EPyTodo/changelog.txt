@@ -1,0 +1,9 @@
+Changelog for EPyTodo project
+
+
+-----------------------------
+API v1.3
+
+- removal of "/register" route with "GET" method
+- further explanations into "REGISTER_POST" part
+-----------------------------
