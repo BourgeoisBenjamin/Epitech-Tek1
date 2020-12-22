@@ -1,0 +1,13 @@
+*.o
+*.a
+*~
+#*#
+~*~
+*.gcda
+*.gcno
+vgcore.*
+42sh
+.history_42sh
+.alias
+tests/.alias
+tests/functional_tests/.alias

@@ -1,0 +1,9 @@
+*.o
+*.a
+*~
+#*#
+~*~
+*.gcda
+*.gcno
+vscore.*
+my_rpg

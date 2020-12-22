@@ -1,0 +1,16 @@
+/*
+** EPITECH PROJECT, 2018
+** my_str_isnums.c
+** File description:
+** Task10 of Pool Day06
+*/
+
+int my_str_isnum(char const *str)
+{
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (!(('0' <= str[i] && str[i] <= '9')
+            || str[i] == '+' || str[i] == '-'))
+            return 0;
+    }
+    return 1;
+}

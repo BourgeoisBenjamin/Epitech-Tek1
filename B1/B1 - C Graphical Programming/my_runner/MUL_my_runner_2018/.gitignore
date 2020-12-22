@@ -1,0 +1,5 @@
+copyright
+*.o
+*.a
+sprite/origin/
+sprite/background/old

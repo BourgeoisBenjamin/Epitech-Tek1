@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+#-*-coding:Utf-8 -*
+# =============================================================================
+# Created By  : Benjamin Bourgeois (benjamin.bourgeois@epitech.eu)
+# PROJECT : Maths - 107transfer
+# =============================================================================
+"""
+107transfer
+"""
+# =============================================================================
+# Imports
+
+import math
+import sys
+import usage
+import calcul
+# =============================================================================
+
+def print_result(list):
+    x = 0.000
+    for i in range(0, len(list)):
+        print("%.3f -> %.5f" % (x, list[i]))
+        x += 0.001
+
+def check_list():
+    for i in range(1, len(sys.argv)):
+        list = []
+        list = sys.argv[i].split('*')
+        for j in range(0, len(list)):
+            try:
+                int(list[j])
+            except:
+                usage.display_usage()
+                sys.exit(84)
+
+def check_arg():
+    if (len(sys.argv) == 2):
+        if (sys.argv[1][0] == '-' and sys.argv[1][1] == 'h' and len(sys.argv[1]) == 2):
+            usage.display_help()
+            sys.exit(0)
+    if (len(sys.argv) % 2 != 1):
+        usage.display_usage()
+        sys.exit(84)
+
+def transfer():
+    fx = []
+    result = []
+    x = 0.000
+    temp = 1.00000
+
+    check_arg()
+    check_list()
+    while (x < 1.001):
+        for i in range(len(sys.argv) - 1 , 0, -2):
+            temp *= calcul.calcul(x, i)
+        x += 0.001
+        result.append(temp)
+        temp = 1.00000
+    print_result(result)
+
+transfer()

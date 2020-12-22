@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+#-*-coding:Utf-8 -*
+# =============================================================================
+# Created By  : Benjamin Bourgeois (benjamin.bourgeois@epitech.eu)
+# PROJECT : Maths - 106bombix
+# =============================================================================
+"""
+106bombyx
+"""
+# =============================================================================
+# Imports
+
+import math
+import sys
+import usage
+import next_gen
+# =============================================================================
+
+def check_arg():
+    if (len(sys.argv) == 2):
+        if (sys.argv[1][0] == '-' and sys.argv[1][1] == 'h' and len(sys.argv[1]) == 2):
+            usage.display_help()
+            sys.exit(0)
+    if (len(sys.argv) > 4 or len(sys.argv) < 3):
+        usage.display_usage()
+        sys.exit(84)
+
+    if (not sys.argv[1].isdigit()):
+        usage.display_usage()
+        sys.exit(84)
+
+    if (int(sys.argv[1]) < 0):
+        usage.display_usage()
+        sys.exit(84)
+
+    if (len(sys.argv) == 3):
+        try:
+            float(sys.argv[2])
+        except:
+            usage.display_usage()
+            sys.exit(84)
+        if (not 1 <= float(sys.argv[2]) <= 4):
+            usage.display_usage()
+            sys.exit(84)
+
+    if (len(sys.argv) == 4):
+        if (not sys.argv[1].isdigit() or not sys.argv[2].isdigit() or not sys.argv[3].isdigit()):
+            usage.display_usage()
+            sys.exit(84)
+        if (int (sys.argv[3]) < 0 or int(sys.argv[2]) < 0 or int(sys.argv[2]) > int(sys.argv[3])):
+            usage.display_usage()
+            sys.exit(84)
+
+def bombix():
+    check_arg()
+    if (len(sys.argv) == 3):
+        next_gen.calcul_option_1(int(sys.argv[1]), float(sys.argv[2]))
+    else:
+        next_gen.calcul_option_2(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]))
+
+bombix()

@@ -1,0 +1,10 @@
+[HOW TO CREATE A MAP]
+The map contains 6 lines.
+The player spawns on the line 5.
+Each line can be composed by :
+
+	Space = Nothing
+	1 = Platform
+	2 = Enemy
+	3 = Enemy2
+	4 = End of the game

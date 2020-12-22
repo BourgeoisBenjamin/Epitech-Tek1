@@ -1,0 +1,21 @@
+#!/usr/bin/python3
+#-*-coding:Utf-8 -*
+
+import sys
+from help import *
+from error import *
+from parse_file import *
+from calcul import *
+
+def main():
+    check_error()
+    tab = parse_file()
+    if (len(tab) <= 4):
+        sys.exit(84)
+    first_deriv_result, higher = calcul_derivation1(tab)
+    second_deriv_result = calcul_derivation2(tab, first_deriv_result, higher)
+    calcul_derivation_estimated(tab, second_deriv_result, higher)
+
+if __name__ == '__main__':
+    main()
+    sys.exit(0)

@@ -1,0 +1,68 @@
+#!/usr/bin/python3
+#-*-coding:Utf-8 -*
+# =============================================================================
+# Created By  : Benjamin Bourgeois (benjamin.bourgeois@epitech.eu) - Romain JOLIDON (romain.jolidon@epitech.eu)
+# PROJECT : Maths - 108trigo
+# =============================================================================
+"""
+108trigo
+"""
+# =============================================================================
+# Imports
+
+import math
+import sys
+import usage
+import calcul
+import matrixcalc
+# =============================================================================
+
+def print_result(matrix):
+    for i in range(len(matrix)):
+        for j in range(len(matrix[i])):
+            print("%.2f" % (matrix[i][j]), end="")
+            if (j != len(matrix[i]) - 1):
+                print('\t', end="")
+            else:
+                print('\n', end="")
+
+def check_arg():
+    if (len(sys.argv) < 2):
+        usage.display_usage()
+        sys.exit(84)
+    if (len(sys.argv) == 2):
+        if (sys.argv[1] == "-h"):
+            usage.display_help()
+            sys.exit(0)
+        else:
+            usage.display_usage()
+            sys.exit(84)
+    if (sys.argv[1] != "EXP" and sys.argv[1] != "COS" and sys.argv[1] != "SIN" and sys.argv[1] != "COSH" and sys.argv[1] != "SINH"):
+        usage.display_usage()
+        sys.exit(84)
+    if (int(math.sqrt(len(sys.argv) - 2)) != math.sqrt(len(sys.argv) - 2)):
+        usage.display_usage()
+        sys.exit(84)
+    for i in range (2, len(sys.argv)):
+        try:
+            int(sys.argv[i])
+        except:
+            usage.display_usage()
+            sys.exit(84)
+
+def trigo():
+    check_arg()
+    matrix = matrixcalc.get_matrix()
+    if (sys.argv[1] == "EXP"):
+        matrix = calcul.expo(matrix)
+    elif (sys.argv[1] == "COS"):
+        matrix = calcul.cosinus(matrix)
+    elif (sys.argv[1] == "SIN"):
+        matrix = calcul.sinus(matrix)
+    elif (sys.argv[1] == "COSH"):
+        matrix = calcul.cosinush(matrix)
+    elif (sys.argv[1] == "SINH"):
+        matrix = calcul.sinush(matrix)
+    print_result(matrix)
+
+trigo()
